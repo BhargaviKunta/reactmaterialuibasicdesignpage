@@ -1,15 +1,34 @@
-import { ImageList,ImageListItem,Box} from '@mui/material'
+import {Box} from '@mui/material'
 import React from 'react'
-import Pic from './assets/pic.png'
-
-const image = () => {
+import Lap from './assets/lap.png'
+import {makeStyles} from '@material-ui/core'
+import { Theme } from '@mui/material'
+import { alignProperty } from '@mui/material/styles/cssUtils'
+const useStyles=makeStyles(theme =>({
+    box:{
+      marginTop:"10px",
+    },
+    img:{
+      border:"1px solid black",
+      width:2800,
+      height:400,
+      [theme.breakpoints.between("xs","lg")]:{
+        margin:100,
+        width:1000,
+        height:800,marginLeft:800
+        }
+    }
+}))
+function Image(){
+  const Classes=useStyles()
   return (
-    <React.Fragment>
-        <Box sx={{marginTop:"150px",width:"100%",height:"300px",display:{xs:{width:"1200px",height:"500px"},sm:{width:"1000px",height:"200px"}}}}>
-            <img src={Pic} alt="page not found" style={{width:"100%",height:"400px"}}></img>
+    
+    <>
+        <Box className={Classes.box}>
+            <img src={Lap} alt="page not found" className={Classes.img}></img>
         </Box>
-    </React.Fragment>
+    </>
   )
 }
 
-export default image
+export default Image

@@ -6,20 +6,41 @@ import Item from '@mui/material/Grid'
 import DownloadIcon from '@mui/icons-material/Download';
 import { Dangerous } from '@mui/icons-material'
 import {Stack,Box} from '@mui/material'
-
-const footer = () => {
+import { makeStyles } from '@material-ui/core'
+import { Theme } from '@mui/material'
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+const useStyles=makeStyles((theme)=>({
+    stack:{
+      backgroundColor:"black",marginTop:200,
+      width:2800
+    },
+    text1:{
+      color:"white",width:300,height:180,textAlign:"center",paddingTop:4,paddingRight:40
+    },
+    text2:{
+      color:"red"
+    },
+   grid1:{
+   marginBottom:20,width:300,height:250,marginLeft:1100
+   },
+   grid2:{
+    marginBottom:20,width:300,height:250,marginRight:700
+   }
+}))
+function Footer(){
+  const Classes=useStyles();
   return (
     <React.Fragment>
        
- <Stack direction={"row"} sx={{backgroundColor:"black",marginTop:"200px"}}>
- <Grid flexDirection={"column"} item xs={4} lg={4} sx={{display:{xs:{width:"300px"},lg:{width:"600px"}}}}><Box>
-            <Typography variant="h3" sx={{color:"white",width:"200px",height:"300px",textAlign:"center",paddingTop:"30px",paddingRight:"20px"}}> Stay Updated with Our App!!</Typography>
-            <Typography sx={{color:"red",marginRight:"20px"}}>Downoad Now <DownloadIcon sx={{color:"white"}}></DownloadIcon></Typography></Box></Grid>
+ <Stack direction={"row"} className={Classes.stack}>
+ <Grid flexDirection={"column"} item justifyContent={"space-around"} alignItems={"flex-start"}><Box>
+            <Typography variant="h3" className={Classes.text1} sx={{marginLeft:10,marginTop:10}}> Stay Updated with Our App!!</Typography>
+            <Typography className={Classes.text2} sx={{marginLeft:12,fontSize:30}}>Downoad Now <PlayArrowIcon sx={{color:"white",fontSize:35,border:"1px solid white",marginLeft:4,marginTop:2}}></PlayArrowIcon></Typography></Box></Grid>
          
-           <Grid item xs={4} lg={4} sx={{marginBottom:"200px"}}>
-          <img src={Edu} style={{width:"300px",height:"300px",marginLeft:"400px"}} /></Grid>
-           <Grid item xs={4} lg={4} sx={{marginBottom:"200px"}}>
-            <img src={Edu} style={{width:"300px",height:"300px"}} /></Grid>
+           <Grid item >
+          <img src={Edu}  className={Classes.grid1} /></Grid>
+           <Grid item >
+            <img src={Edu}  className={Classes.grid2}/></Grid>
         
  </Stack>
            
@@ -29,4 +50,4 @@ const footer = () => {
   )
 }
 
-export default footer
+export default Footer
